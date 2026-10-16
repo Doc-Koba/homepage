@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="132" viewBox="0 0 240 132">
+  <defs>
+    <pattern id="stripe" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="10" height="20" fill="#111111"/>
+      <rect x="10" width="10" height="20" fill="#ffd400"/>
+    </pattern>
+  </defs>
+  <rect x="34" y="84" width="10" height="40" fill="#8a8a8a"/>
+  <rect x="196" y="84" width="10" height="40" fill="#8a8a8a"/>
+  <rect x="22" y="122" width="34" height="8" fill="#555555"/>
+  <rect x="184" y="122" width="34" height="8" fill="#555555"/>
+  <rect x="10" y="52" width="220" height="34" fill="url(#stripe)" stroke="#111111" stroke-width="3"/>
+  <rect x="58" y="6" width="124" height="40" rx="4" fill="#ffd400" stroke="#111111" stroke-width="3"/>
+  <circle cx="72" cy="26" r="6" fill="#ff3b30" stroke="#111111" stroke-width="2"/>
+  <text x="128" y="35" font-family="'Mochiy Pop One','HGP創英角ﾎﾟｯﾌﾟ体','Hiragino Kaku Gothic ProN','Noto Sans CJK JP',sans-serif" font-size="25" font-weight="bold" fill="#111111" text-anchor="middle">工事中</text>
+</svg>
