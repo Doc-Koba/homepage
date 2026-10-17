@@ -114,11 +114,22 @@
       Array.prototype.forEach.call(fixedList.querySelectorAll('.bbs-meta'), function (el) {
         fixedMeta[el.textContent] = true;
       });
+      /* 投稿者とタイトルの組でも照合する（転載したときの時刻が控えと1分ずれても重ならないように） */
+      Array.prototype.forEach.call(fixedList.querySelectorAll('.bbs-post, .bbs-reply'), function (el) {
+        var head = el.querySelector('.bbs-head');
+        var meta = el.querySelector('.bbs-meta');
+        var who = meta && meta.textContent.match(/投稿者：(.*?)　投稿日：/);
+        if (head && who) {
+          fixedMeta[who[1] + '\n' + head.textContent.replace(/^\[\d+\]/, '').trim()] = true;
+        }
+      });
     }
     /* ページに転載された書き込みはブラウザの中の控えから外し、番号が重なる書き込みは後ろへずらす */
     var bbsChanged = false;
     posts = posts.filter(function (p) {
-      var keep = !!p && typeof p === 'object' && !fixedMeta['投稿者：' + p.name + '　投稿日：' + p.date];
+      var keep = !!p && typeof p === 'object' &&
+        !fixedMeta['投稿者：' + p.name + '　投稿日：' + p.date] &&
+        !(p.title && fixedMeta[p.name + '\n' + p.title]);
       if (!keep) { bbsChanged = true; }
       return keep;
     });
