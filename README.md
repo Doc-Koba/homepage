@@ -59,7 +59,7 @@ HTMLとCSSだけでできているので、GitHub Pages に置けばそのまま
 
 ## 公開前に直すところ
 
-- **メールアドレス**：contact＠yoshiyukikobayashi.com は仮置きです。独自ドメインのメール転送を設定するか、実際に使うアドレスに書き換えてください（全ページのフッターと、en.html の本文）。
+- **メールアドレス**：yoshiyukikobayashi.com のメール転送（ImprovMX）が使えるようになるまで「工事中」にしています。転送を確かめたら、全ページのフッターの「メール：工事中」の行を contact＠yoshiyukikobayashi.com（＠は全角、注意書きつき）に、en.html の本文とフッターの「Email: coming soon (under construction)」を contact [at] yoshiyukikobayashi.com に戻してください。
 - **開設日**：公開する日に合わせて、index.html の What's New! と、各ページのフッター（Since ／ 最終更新）の日付を直してください。
 - **好きな食べ物**：profile.html の「ひみつです」はお好みで。
 
