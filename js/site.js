@@ -37,6 +37,31 @@
     }
   }
 
+  /* ---------- アクセスカウンター（GoatCounter の合計を平成風の7けたで表示） ----------
+     数が取れないとき（集計前・広告ブロックなど）は、最初から書いてある「1 mol 人目」のまま */
+  var gcCount = document.getElementById('gc-count');
+  var gcNote = document.getElementById('gc-note');
+  if (gcCount && gcNote && window.fetch) {
+    fetch('https://yoshiyukikobayashi.goatcounter.com/counter/TOTAL.json')
+      .then(function (r) {
+        if (!r.ok) { throw new Error('HTTP ' + r.status); }
+        return r.json();
+      })
+      .then(function (d) {
+        var n = parseInt(String(d && d.count).replace(/[^0-9]/g, ''), 10);
+        if (!(n > 0)) { throw new Error('no count'); }
+        var s = String(n);
+        while (s.length < 7) { s = '0' + s; }
+        gcCount.textContent = s;
+        var mol = n / 6.02214076e23;
+        var exp = Math.floor(Math.log(mol) / Math.LN10);
+        var mant = (mol / Math.pow(10, exp)).toFixed(2);
+        gcNote.innerHTML = '※モルに換算すると ' + mant + '×10<sup>−' + Math.abs(exp) +
+          '</sup> mol です。1 mol（6.02×10<sup>23</sup>人）まで、あと少し……ではありません。数字は数時間おきに更新されます。';
+      })
+      .catch(function () { /* そのまま */ });
+  }
+
   /* ---------- Web拍手 ---------- */
   var clapBtn = document.getElementById('clap-btn');
   var clapMsg = document.getElementById('clap-msg');
