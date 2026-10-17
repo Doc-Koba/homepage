@@ -69,11 +69,35 @@
     var bbsStatus = document.getElementById('bbs-status');
     var delForm = document.getElementById('bbs-del');
     var delStatus = document.getElementById('bbs-del-status');
-    var FIXED_MAX = 10;   // 架空の書き込みの番号は 1〜10
     var colors = ['ink', 'red', 'blue', 'green', 'purple', 'orange', 'pink'];
     var posts = [];
     try { posts = JSON.parse(load('yk-bbs') || '[]'); } catch (e) { posts = []; }
     if (!Array.isArray(posts)) { posts = []; }
+
+    /* ページに載せてある書き込み（架空のもの・管理人が転載したもの）の番号の最大値と、投稿者・投稿日の行 */
+    var FIXED_MAX = 0;
+    var fixedMeta = {};
+    var fixedList = document.getElementById('bbs-fixed');
+    if (fixedList) {
+      Array.prototype.forEach.call(fixedList.querySelectorAll('.bbs-no'), function (el) {
+        var n = parseInt(el.textContent.replace(/[^0-9]/g, ''), 10);
+        if (n > FIXED_MAX) { FIXED_MAX = n; }
+      });
+      Array.prototype.forEach.call(fixedList.querySelectorAll('.bbs-meta'), function (el) {
+        fixedMeta[el.textContent] = true;
+      });
+    }
+    /* ページに転載された書き込みはブラウザの中の控えから外し、番号が重なる書き込みは後ろへずらす */
+    var bbsChanged = false;
+    posts = posts.filter(function (p) {
+      var keep = !!p && typeof p === 'object' && !fixedMeta['投稿者：' + p.name + '　投稿日：' + p.date];
+      if (!keep) { bbsChanged = true; }
+      return keep;
+    });
+    if (posts.some(function (p) { return !(p.no > FIXED_MAX); })) {
+      posts.forEach(function (p, i) { p.no = FIXED_MAX + 1 + i; });
+      bbsChanged = true;
+    }
 
     var pad = function (n) { return (n < 10 ? '0' : '') + n; };
     var fmtDate = function (d) {
@@ -119,6 +143,7 @@
       });
     };
     var savePosts = function () { save('yk-bbs', JSON.stringify(posts.slice(-30))); };
+    if (bbsChanged) { savePosts(); }
     renderPosts();
 
     bbsForm.addEventListener('submit', function (e) {
