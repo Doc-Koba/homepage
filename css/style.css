@@ -640,14 +640,27 @@ hr.rainbow {
 .secret-door svg { display: block; transition: transform 0.3s; }
 .secret-door a:hover svg, .secret-door a:focus-visible svg { transform: translateX(4px); }
 .bike { display: flex; gap: 14px; align-items: flex-start; margin: 0 0 14px; padding: 10px; border: 2px solid var(--frame); background: var(--paper-alt); }
-.bike-photos { flex: 0 0 auto; display: grid; gap: 8px; justify-items: center; }
+.bike-photos { flex: 0 0 auto; width: 168px; display: grid; gap: 8px; justify-items: center; align-content: start; }
+.bike-photos a { display: block; }
 .bike-photos img { display: block; border: 4px ridge var(--frame); background: var(--paper); }
 .bike-data { flex: 1 1 auto; min-width: 0; }
 .bike-no { margin: 0 0 6px; font-family: var(--font-dot); font-weight: bold; color: var(--pink); }
 .bike-now { margin-left: 6px; padding: 0 6px; font-size: 12px; color: var(--paper); background: var(--pink); white-space: nowrap; }
 .bike .tbl { margin-bottom: 0; }
+.bike .tbl th { width: 5.5em; }
 @media (max-width: 520px) {
   .bike { flex-direction: column; align-items: stretch; }
+  .bike-photos { width: auto; }
+  /* 写真が2〜3枚ある台は、スマホでは2列に並べる（3枚目は下の段のまんなか） */
+  .bike-photos.n2, .bike-photos.n3 { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: stretch; }
+  .bike-photos.n2 img, .bike-photos.n3 img { box-sizing: border-box; width: 100%; height: auto; }
+  .bike-photos.n3 > :last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 4px); }
+  /* 愛車の表は見出しが短いので、スマホでも見出しと中身を横に並べたまま */
+  .bike .tbl { display: table; width: 100%; }
+  .bike .tbl tbody { display: table-row-group; }
+  .bike .tbl tr { display: table-row; }
+  .bike .tbl th, .bike .tbl td { display: table-cell; padding: 6px 7px; }
+  .bike .tbl th { width: 1%; white-space: nowrap; border-bottom: 1px inset var(--frame); }
 }
 @media (prefers-reduced-motion: reduce) {
   .secret-door svg { transition: none; }
