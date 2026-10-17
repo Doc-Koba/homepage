@@ -9,7 +9,7 @@
   <rect x="1" y="1" width="198" height="38" fill="none" stroke="#ffffff" stroke-width="2"/>
   <g fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.4">
     <path d="M24 20l-4 6.9h-8L8 20l4-6.9h8z"/>
-    <circle cx="16" cy="20" r="4.2"/>
+    <path d="M21.10 20.22L18.74 24.31M13.26 24.31L10.90 20.22M13.64 15.47L18.36 15.47"/>
   </g>
   <text x="112" y="20" font-family="'Mochiy Pop One','MS PGothic','Noto Sans CJK JP',sans-serif" font-size="14.5" fill="#ffff66" text-anchor="middle">小林由幸のホームページ</text>
   <text x="112" y="33" font-family="'DotGothic16','MS Gothic',monospace" font-size="9.5" fill="#ffffff" text-anchor="middle">yoshiyukikobayashi.com</text>
