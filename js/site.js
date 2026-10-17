@@ -62,6 +62,117 @@
       .catch(function () { /* そのまま */ });
   }
 
+  /* ---------- 掲示板（BBS）：書き込みは見ている人のブラウザの中だけに保存する ---------- */
+  var bbsForm = document.getElementById('bbs-form');
+  if (bbsForm) {
+    var bbsList = document.getElementById('bbs-local');
+    var bbsStatus = document.getElementById('bbs-status');
+    var delForm = document.getElementById('bbs-del');
+    var delStatus = document.getElementById('bbs-del-status');
+    var FIXED_MAX = 10;   // 架空の書き込みの番号は 1〜10
+    var colors = ['ink', 'red', 'blue', 'green', 'purple', 'orange', 'pink'];
+    var posts = [];
+    try { posts = JSON.parse(load('yk-bbs') || '[]'); } catch (e) { posts = []; }
+    if (!Array.isArray(posts)) { posts = []; }
+
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var fmtDate = function (d) {
+      return d.getFullYear() + '/' + pad(d.getMonth() + 1) + '/' + pad(d.getDate()) +
+        '(' + '日月火水木金土'.charAt(d.getDay()) + ') ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+    };
+    var hashKey = function (k) {   // 削除キーはそのまま保存しない
+      var h = 5381;
+      for (var i = 0; i < k.length; i++) { h = ((h * 33) ^ k.charCodeAt(i)) >>> 0; }
+      return String(h);
+    };
+    var renderPosts = function () {
+      bbsList.textContent = '';
+      posts.slice().reverse().forEach(function (p) {
+        var art = document.createElement('article');
+        art.className = 'bbs-post';
+        var head = document.createElement('p');
+        head.className = 'bbs-head';
+        var no = document.createElement('span');
+        no.className = 'bbs-no';
+        no.textContent = '[' + p.no + ']';
+        var title = document.createElement('span');
+        title.textContent = p.title || '（無題）';
+        var tag = document.createElement('span');
+        tag.className = 'bbs-mine-tag';
+        tag.textContent = 'あなたのブラウザにだけ表示中';
+        head.appendChild(no);
+        head.appendChild(title);
+        head.appendChild(tag);
+        var meta = document.createElement('p');
+        meta.className = 'bbs-meta';
+        meta.textContent = '投稿者：' + p.name + '　投稿日：' + p.date;
+        var body = document.createElement('div');
+        body.className = 'bbs-body c-' + (colors.indexOf(p.color) >= 0 ? p.color : 'ink');
+        String(p.msg).split('\n').forEach(function (line, i) {
+          if (i) { body.appendChild(document.createElement('br')); }
+          body.appendChild(document.createTextNode(line));
+        });
+        art.appendChild(head);
+        art.appendChild(meta);
+        art.appendChild(body);
+        bbsList.appendChild(art);
+      });
+    };
+    var savePosts = function () { save('yk-bbs', JSON.stringify(posts.slice(-30))); };
+    renderPosts();
+
+    bbsForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('bbs-name').value.trim();
+      var title = document.getElementById('bbs-title').value.trim();
+      var msg = document.getElementById('bbs-msg').value.trim();
+      var key = document.getElementById('bbs-key').value;
+      var picked = bbsForm.querySelector('input[name="bbs-color"]:checked');
+      if (!name || !msg) {
+        bbsStatus.textContent = 'おなまえとメッセージを入れてください m(_ _)m';
+        return;
+      }
+      var next = FIXED_MAX;
+      posts.forEach(function (p) { if (p.no > next) { next = p.no; } });
+      posts.push({
+        no: next + 1, name: name.slice(0, 20), title: title.slice(0, 30), msg: msg.slice(0, 1000),
+        color: picked ? picked.value : 'ink', key: key ? hashKey(key) : '', date: fmtDate(new Date())
+      });
+      savePosts();
+      renderPosts();
+      bbsForm.reset();
+      bbsStatus.textContent = '書き込みました！(^^) ※あなたのブラウザにだけ表示されていて、管理人には届きません。';
+    });
+
+    if (delForm) {
+      delForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var no = parseInt(document.getElementById('del-no').value, 10);
+        var key = document.getElementById('del-key').value;
+        if (!(no > 0)) { delStatus.textContent = '記事Noを数字で入れてください。'; return; }
+        if (no <= FIXED_MAX) {
+          delStatus.textContent = 'この記事は管理人の思い出なので、削除できません(^^;';
+          return;
+        }
+        for (var i = 0; i < posts.length; i++) {
+          if (posts[i].no === no) {
+            if (!posts[i].key || posts[i].key !== hashKey(key)) {
+              delStatus.textContent = '削除キーが違います。';
+              return;
+            }
+            posts.splice(i, 1);
+            savePosts();
+            renderPosts();
+            delForm.reset();
+            delStatus.textContent = '記事No.' + no + ' を削除しました。';
+            return;
+          }
+        }
+        delStatus.textContent = 'その記事Noは見つかりませんでした。';
+      });
+    }
+  }
+
   /* ---------- Web拍手 ---------- */
   var clapBtn = document.getElementById('clap-btn');
   var clapMsg = document.getElementById('clap-msg');

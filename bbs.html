@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>掲示板｜小林由幸のホームページ</title>
+<meta name="description" content="小林由幸のホームページの掲示板（平成風のなんちゃって掲示板）。">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://yoshiyukikobayashi.com/bbs.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="小林由幸のホームページ">
+<meta property="og:title" content="掲示板｜小林由幸のホームページ">
+<meta property="og:description" content="小林由幸のホームページの掲示板（平成風のなんちゃって掲示板）。">
+<meta property="og:url" content="https://yoshiyukikobayashi.com/bbs.html">
+<meta property="og:image" content="https://yoshiyukikobayashi.com/img/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&amp;family=Mochiy+Pop+One&amp;display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="wrap">
+<header class="site-head" id="top">
+<p class="site-title"><a href="index.html">☆小林由幸のホームページ☆</a></p>
+<p class="site-sub">Yoshiyuki Kobayashi's Home Page ～薬学×衛生学×情報学×レギュラトリーサイエンス～</p>
+
+</header>
+<div class="layout">
+<nav class="menu" aria-label="メニュー">
+<p class="menu-head">MENU</p>
+<ul>
+<li><a class="btn" href="index.html">TOP<small>Top</small></a></li>
+<li><a class="btn" href="profile.html">管理人について<small>Profile</small></a></li>
+<li><a class="btn" href="research.html">研究の部屋<small>Research</small></a></li>
+<li><a class="btn" href="papers.html">論文置き場<small>Publications</small></a></li>
+<li><a class="btn" href="teaching.html">講義・教育<small>Teaching</small></a></li>
+<li><a class="btn" href="omikuji.html">研究おみくじ<small>Omikuji</small></a></li>
+<li><a class="btn" href="bbs.html" aria-current="page">掲示板 <span class="new">NEW!</span><small>BBS</small></a></li>
+<li><a class="btn" href="zakki.html">雑記帳（工事中）<small>Diary</small></a></li>
+<li><a class="btn" href="links.html">リンク集<small>Links</small></a></li>
+<li><a class="btn" href="en.html">English</a></li>
+</ul>
+<p class="menu-foot">お気に入りに登録してね☆</p>
+</nav>
+<main class="main" id="main">
+<h1 class="page-title">☆なんでも掲示板☆</h1>
+<p>ようこそ掲示板へ<span class="kao">(^^)</span> 感想、キリ番の報告、相互リンクのご依頼など、お気軽にどうぞ♪</p>
+<div class="bbs-rules small">
+<p>■ 荒らし・宣伝の書き込みは、管理人が見つけしだい削除します。</p>
+<p>■ ここは平成の雰囲気を再現した「なんちゃって掲示板」です。下に並んでいる書き込みは、雰囲気を出すための架空のものです。</p>
+<p>■ 新しく書き込んだ内容は、あなたのブラウザの中にだけ保存されます。管理人には届かないので、ご用件はメールでどうぞ。</p>
+</div>
+
+<h2 class="bar">▼ 書き込みフォーム</h2>
+<form id="bbs-form" class="bbs-form" autocomplete="off">
+<table class="bbs-form-tbl">
+<tr><th><label for="bbs-name">おなまえ</label></th><td><input type="text" id="bbs-name" maxlength="20" size="20" required></td></tr>
+<tr><th><label for="bbs-title">タイトル</label></th><td><input type="text" id="bbs-title" maxlength="30" size="30"></td></tr>
+<tr><th><label for="bbs-msg">メッセージ</label></th><td><textarea id="bbs-msg" rows="5" maxlength="1000" required></textarea></td></tr>
+<tr><th>文字色</th><td><div class="bbs-colors" role="radiogroup" aria-label="文字色">
+<label class="c-ink"><input type="radio" name="bbs-color" value="ink" checked> ■黒</label>
+<label class="c-red"><input type="radio" name="bbs-color" value="red"> ■赤</label>
+<label class="c-blue"><input type="radio" name="bbs-color" value="blue"> ■青</label>
+<label class="c-green"><input type="radio" name="bbs-color" value="green"> ■緑</label>
+<label class="c-purple"><input type="radio" name="bbs-color" value="purple"> ■紫</label>
+<label class="c-orange"><input type="radio" name="bbs-color" value="orange"> ■橙</label>
+<label class="c-pink"><input type="radio" name="bbs-color" value="pink"> ■桃</label>
+</div></td></tr>
+<tr><th><label for="bbs-key">削除キー</label></th><td><input type="password" id="bbs-key" maxlength="8" size="8"> <span class="small">（英数字8文字まで。ほかで使っているパスワードは入れないでください）</span></td></tr>
+</table>
+<p><button type="submit" class="btn btn-inline">投稿する</button> <button type="reset" class="btn btn-inline">リセット</button></p>
+<p class="small" id="bbs-status" aria-live="polite"></p>
+</form>
+
+<h2 class="bar">▼ 書き込み一覧</h2>
+<div id="bbs-local" class="bbs-list"></div>
+<div class="bbs-list">
+<article class="bbs-post">
+<p class="bbs-head"><span class="bbs-no">[9]</span>ポッポー</p>
+<p class="bbs-meta">投稿者：鳩　投稿日：2026/10/17(土) 10:21</p>
+<div class="bbs-body c-orange">ポッポー。<br>背景からお邪魔しました。ベンゼン環さんには、ないしょでお願いします。</div>
+<div class="bbs-reply">
+<p class="bbs-head"><span class="bbs-no">[10]</span>Re: ポッポー</p>
+<p class="bbs-meta">投稿者：管理人　投稿日：2026/10/17(土) 10:24</p>
+<div class="bbs-body c-blue">背景に戻ってください<span class="kao">(^^;</span><br>ベンゼン環も、たぶん気づいています。</div>
+</div>
+</article>
+<article class="bbs-post">
+<p class="bbs-head"><span class="bbs-no">[7]</span>査読コメント</p>
+<p class="bbs-meta">投稿者：Reviewer 2　投稿日：2026/10/17(土) 10:18</p>
+<div class="bbs-body c-ink">全体として興味深い掲示板ですが、書き込みの新規性が十分に示されていません。<br>Major revision を推奨します。</div>
+<div class="bbs-reply">
+<p class="bbs-head"><span class="bbs-no">[8]</span>Re: 査読コメント</p>
+<p class="bbs-meta">投稿者：管理人　投稿日：2026/10/17(土) 10:20</p>
+<div class="bbs-body c-blue">ご指摘ありがとうございます。改訂版を準備します……<span class="kao">(;´Д`)</span></div>
+</div>
+</article>
+<article class="bbs-post">
+<p class="bbs-head"><span class="bbs-no">[5]</span>キリ番！？</p>
+<p class="bbs-meta">投稿者：ねこ好き薬剤師　投稿日：2026/10/17(土) 10:15</p>
+<div class="bbs-body c-pink">カウンターを見たら 6.02×10^23 でした！<br>これってキリ番ですか！？（笑）</div>
+<div class="bbs-reply">
+<p class="bbs-head"><span class="bbs-no">[6]</span>Re: キリ番！？</p>
+<p class="bbs-meta">投稿者：管理人　投稿日：2026/10/17(土) 10:16</p>
+<div class="bbs-body c-blue">ある意味、いちばん大きいキリ番です<span class="kao">(^^)</span><br>1 mol 人目おめでとうございます！ 記念品はありません<span class="kao">m(_ _)m</span></div>
+</div>
+</article>
+<article class="bbs-post">
+<p class="bbs-head"><span class="bbs-no">[3]</span>はじめまして☆</p>
+<p class="bbs-meta">投稿者：通りすがりの院生　投稿日：2026/10/17(土) 10:11</p>
+<div class="bbs-body c-green">ネットサーフィンしていたら、たどり着きました！ 背景のハトがかわいいです<span class="kao">(*^_^*)</span><br>研究おみくじを引いたら「凶」でした。Reviewer 2 があらわれるそうです……。<br>また遊びに来ますね～♪</div>
+<div class="bbs-reply">
+<p class="bbs-head"><span class="bbs-no">[4]</span>Re: はじめまして☆</p>
+<p class="bbs-meta">投稿者：管理人　投稿日：2026/10/17(土) 10:13</p>
+<div class="bbs-body c-blue">書き込みありがとうございます！<br>凶は、たぶん当たりません<span class="kao">(^^;</span> またお気軽にどうぞ♪</div>
+</div>
+</article>
+<article class="bbs-post">
+<p class="bbs-head"><span class="bbs-no">[1]</span>掲示板を作りました！</p>
+<p class="bbs-meta">投稿者：管理人　投稿日：2026/10/17(土) 10:05</p>
+<div class="bbs-body c-blue">管理人の小林です。掲示板を設置しました<span class="kao">(^^)v</span><br>感想、キリ番の報告、相互リンクのご依頼など、お気軽に書き込んでくださいね。<br>荒らしはスルーでお願いします。</div>
+<div class="bbs-reply">
+<p class="bbs-head"><span class="bbs-no">[2]</span>Re: 掲示板を作りました！</p>
+<p class="bbs-meta">投稿者：ハイヒール好き　投稿日：2026/10/17(土) 10:07</p>
+<div class="bbs-body c-purple">開設おめでとうございます！<br>ハイヒール検定、本当にあったんですね。終わってしまったのが残念です<span class="kao">(T_T)</span></div>
+</div>
+</article>
+</div>
+<p class="bbs-pager">ページ：[1]　<span class="small">※これより古い書き込みは、平成のかなたへ流れていきました。</span></p>
+<form id="bbs-del" class="bbs-del small" autocomplete="off">
+<label for="del-no">記事No</label> <input type="text" id="del-no" inputmode="numeric" size="4">
+<label for="del-key">削除キー</label> <input type="password" id="del-key" maxlength="8" size="8">
+<button type="submit" class="btn btn-inline">記事削除</button>
+<span id="bbs-del-status" aria-live="polite"></span>
+</form>
+<p class="small center">- なんちゃってBBS ver.平成 -</p>
+</main>
+</div>
+<footer class="site-foot">
+<p><a href="#top">▲ページの先頭へ</a>　｜　<a href="index.html">TOPへ戻る</a></p>
+<p>メール：contact＠yoshiyukikobayashi.com<br><span class="small">※迷惑メール対策で「＠」を全角にしています。送るときは半角の「@」に直してください。</span></p>
+<p class="small">当サイトは小林由幸の個人ホームページです。所属機関の見解を示すものではありません。<br>なお、当サイトの内容は査読を経ていません（論文は経ています）。<br>アクセス解析に GoatCounter を使っています（Cookie は使いません）。</p>
+<p class="copy">Copyright (C) 2026 Yoshiyuki Kobayashi. All Rights Reserved.<br>Since 2026.10.17 ／ 最終更新 2026.10.17</p>
+</footer>
+</div>
+<script data-goatcounter="https://yoshiyukikobayashi.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script src="js/site.js" defer></script>
+</body>
+</html>

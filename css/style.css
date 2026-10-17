@@ -36,6 +36,12 @@
   --title-stroke: #1a1a1a;
   --title-shadow: #8080c0;
   --focus: #ff6600;
+  /* 掲示板の文字色 */
+  --c-red: #cc0000;
+  --c-blue: #0000cc;
+  --c-green: #007a00;
+  --c-purple: #800080;
+  --c-orange: #b85c00;
 
   --font-body: "MS PGothic", "ＭＳ Ｐゴシック", "Osaka", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
   --font-pop: "Mochiy Pop One", "HGP創英角ﾎﾟｯﾌﾟ体", "HG創英角ﾎﾟｯﾌﾟ体", "Hiragino Maru Gothic ProN", var(--font-body);
@@ -74,6 +80,11 @@
     --title-stroke: #ffffff;
     --title-shadow: #9900ff;
     --focus: #ffcc00;
+    --c-red: #ff6b6b;
+    --c-blue: #7fb2ff;
+    --c-green: #6ee06e;
+    --c-purple: #e0a3ff;
+    --c-orange: #ffaa44;
     color-scheme: dark;
   }
 }
@@ -106,6 +117,11 @@
   --title-stroke: #ffffff;
   --title-shadow: #9900ff;
   --focus: #ffcc00;
+  --c-red: #ff6b6b;
+  --c-blue: #7fb2ff;
+  --c-green: #6ee06e;
+  --c-purple: #e0a3ff;
+  --c-orange: #ffaa44;
   color-scheme: dark;
 }
 
@@ -502,6 +518,51 @@ hr.rainbow {
   40% { transform: rotate(4deg); }
   60% { transform: rotate(-2deg); }
   80% { transform: rotate(2deg); }
+}
+
+/* ---------- 掲示板（BBS） ---------- */
+.bbs-rules { background: var(--paper-alt); border: 2px dashed var(--frame); padding: 6px 10px; margin-bottom: 14px; }
+.bbs-rules p { margin: 0 0 4px; }
+.bbs-rules p:last-child { margin-bottom: 0; }
+.bbs-form-tbl { border-collapse: separate; border-spacing: 2px; border: 2px outset var(--frame); background: var(--paper-alt); margin-bottom: 8px; max-width: 100%; }
+.bbs-form-tbl th, .bbs-form-tbl td { border: 1px inset var(--frame); padding: 5px 8px; text-align: left; vertical-align: top; }
+.bbs-form-tbl th { background: var(--th); white-space: nowrap; }
+.bbs-form input[type="text"], .bbs-form input[type="password"], .bbs-form textarea, .bbs-del input {
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px inset var(--frame);
+  padding: 2px 4px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.bbs-form textarea { width: 30em; max-width: 100%; }
+.bbs-colors { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.bbs-colors label { white-space: nowrap; font-weight: bold; }
+.c-ink { color: var(--ink); }
+.c-red { color: var(--c-red); }
+.c-blue { color: var(--c-blue); }
+.c-green { color: var(--c-green); }
+.c-purple { color: var(--c-purple); }
+.c-orange { color: var(--c-orange); }
+.c-pink { color: var(--pink); }
+.bbs-list { display: grid; gap: 14px; margin: 10px 0 16px; }
+.bbs-post { border: 2px solid var(--frame); background: var(--paper); }
+.bbs-head { margin: 0; padding: 3px 10px; background: var(--th); font-weight: bold; }
+.bbs-no { font-family: var(--font-dot); color: var(--pink); margin-right: 4px; }
+.bbs-meta { margin: 0; padding: 2px 10px; font-size: 12.5px; color: var(--ink-sub); border-bottom: 1px dotted var(--frame); }
+.bbs-body { padding: 8px 12px; line-height: 1.75; overflow-wrap: anywhere; }
+.bbs-reply { margin: 0 10px 10px 2em; border: 1px solid var(--frame); background: var(--paper-alt); }
+.bbs-reply .bbs-head { background: transparent; border-bottom: 1px dotted var(--frame); }
+.bbs-mine-tag { font-size: 11px; font-weight: normal; border: 1px solid var(--frame); padding: 0 4px; margin-left: 6px; color: var(--ink-sub); white-space: nowrap; }
+.bbs-pager { font-family: var(--font-dot); }
+.bbs-del { background: var(--paper-alt); border: 1px solid var(--frame); padding: 6px 10px; }
+.bbs-del input { width: 6em; }
+@media (max-width: 520px) {
+  .bbs-form-tbl, .bbs-form-tbl tbody, .bbs-form-tbl tr, .bbs-form-tbl th, .bbs-form-tbl td { display: block; width: auto; }
+  .bbs-form-tbl th { border-bottom: 0; }
+  .bbs-form input[type="text"], .bbs-form textarea { width: 100%; }
+  .bbs-reply { margin-left: 10px; }
 }
 
 /* ---------- フッター ---------- */
