@@ -617,3 +617,13 @@ hr.rainbow {
   .new { animation: none; }
   .shake { animation: none; }
 }
+
+/* ---------- お知らせ（What's New の過去ログと詳細ページ） ---------- */
+.news-more { margin: 10px 0 0; text-align: right; font-size: 13px; }
+.news-log dd { margin-bottom: 12px; }
+.crumb { margin: 0 0 6px; }
+.news-date { font-family: var(--font-dot); color: var(--pink); font-weight: bold; margin: 0 0 12px; }
+.gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 10px 0 16px; }
+.gallery figure { margin: 0; width: 168px; text-align: center; }
+.gallery img { border: 4px ridge var(--frame); background: var(--paper-alt); vertical-align: top; }
+.gallery figcaption { margin-top: 4px; font-size: 12.5px; line-height: 1.5; color: var(--ink-sub); }
