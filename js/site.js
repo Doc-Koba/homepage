@@ -13,6 +13,30 @@
     try { window.localStorage.setItem(key, value); } catch (e) { /* 保存できない環境では何もしない */ }
   }
 
+  /* ---------- 背景アニメ（ベンゼンと鳩）の ON / OFF。全ページ共通で覚えておく ---------- */
+  var root = document.documentElement;
+  var bgStill = load('yk-bg') === 'off';
+  if (bgStill) { root.classList.add('bg-still'); }
+  var bgBtn = document.getElementById('bg-btn');
+  if (bgBtn) {
+    var bgRow = document.getElementById('bg-row');
+    if (reduceMotion) {
+      if (bgRow) { bgRow.hidden = true; }
+    } else {
+      var renderBg = function () {
+        bgBtn.textContent = bgStill ? '背景アニメ：OFF' : '背景アニメ：ON';
+        bgBtn.setAttribute('aria-pressed', bgStill ? 'false' : 'true');
+      };
+      renderBg();
+      bgBtn.addEventListener('click', function () {
+        bgStill = !bgStill;
+        root.classList.toggle('bg-still', bgStill);
+        save('yk-bg', bgStill ? 'off' : 'on');
+        renderBg();
+      });
+    }
+  }
+
   /* ---------- Web拍手 ---------- */
   var clapBtn = document.getElementById('clap-btn');
   var clapMsg = document.getElementById('clap-msg');
@@ -79,7 +103,7 @@
       { f: '小吉', t: '共著者からの返信が、その日のうちに届きます。', l: '共有カレンダー' },
       { f: '吉', t: '解析のコードが、エラーなしで最後まで動きます。', l: 'コーヒー' },
       { f: '末吉', t: 'データの前処理が、見積もりの2倍の時間で終わります（いつもは3倍）。', l: '正規表現' },
-      { f: '凶', t: 'Reviewer 2 があらわれます。深呼吸してから返事を書きましょう。', l: 'ていねい語' },
+      { f: '凶', t: 'Reviewer 2 があらわれます(^^; 深呼吸してから返事を書きましょう。', l: 'ていねい語' },
       { f: '大凶', t: '保存する前にソフトが落ちます。こまめに保存しましょう。', l: 'Ctrl + S' }
     ];
     var lastIndex = -1;
