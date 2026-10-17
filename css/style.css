@@ -627,3 +627,8 @@ hr.rainbow {
 .gallery figure { margin: 0; width: 168px; text-align: center; }
 .gallery img { border: 4px ridge var(--frame); background: var(--paper-alt); vertical-align: top; }
 .gallery figcaption { margin-top: 4px; font-size: 12.5px; line-height: 1.5; color: var(--ink-sub); }
+
+/* ---------- 今日のひとこと（TOP） ---------- */
+.hitokoto { margin: 0 0 14px; padding: 8px 12px; border: 2px dashed var(--frame); background: var(--paper-alt); }
+.hitokoto p { margin: 0; font-size: 14px; line-height: 1.6; }
+.hitokoto .hitokoto-head { margin-bottom: 4px; font-family: var(--font-dot); color: var(--pink); font-weight: bold; }

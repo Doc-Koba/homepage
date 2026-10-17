@@ -37,6 +37,33 @@
     }
   }
 
+  /* ---------- 今日のひとこと：日本時間の「月-日」で一文を選ぶ。その日の文がなければ枠は隠したまま ---------- */
+  var hito = document.getElementById('hitokoto');
+  var hitoData = document.getElementById('hitokoto-data');
+  if (hito && hitoData) {
+    var month = '', day = '';
+    try {
+      new Intl.DateTimeFormat('ja-JP', { timeZone: 'Asia/Tokyo', month: 'numeric', day: 'numeric' })
+        .formatToParts(new Date()).forEach(function (part) {
+          if (part.type === 'month') { month = part.value; }
+          if (part.type === 'day') { day = part.value; }
+        });
+    } catch (e) { /* 古いブラウザでは端末の日付を使う */ }
+    if (!month || !day) {
+      var today = new Date();
+      month = String(today.getMonth() + 1);
+      day = String(today.getDate());
+    }
+    var lines = {};
+    try { lines = JSON.parse(hitoData.textContent) || {}; } catch (e) { lines = {}; }
+    var key = ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2);
+    if (lines[key]) {
+      document.getElementById('hitokoto-date').textContent = '（' + Number(month) + '月' + Number(day) + '日）';
+      document.getElementById('hitokoto-text').textContent = lines[key];
+      hito.hidden = false;
+    }
+  }
+
   /* ---------- アクセスカウンター（GoatCounter の合計を平成風の7けたで表示） ----------
      数が取れないとき（集計前・広告ブロックなど）は、最初から書いてある「1 mol 人目」のまま */
   var gcCount = document.getElementById('gc-count');
