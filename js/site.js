@@ -56,6 +56,7 @@
         var mol = n / 6.02214076e23;
         var exp = Math.floor(Math.log(mol) / Math.LN10);
         var mant = (mol / Math.pow(10, exp)).toFixed(2);
+        if (mant === '10.00') { mant = '1.00'; exp += 1; }   // 9.995 以上は繰り上げる（例：6020人目）
         gcNote.innerHTML = '※モルに換算すると ' + mant + '×10<sup>−' + Math.abs(exp) +
           '</sup> mol です。1 mol（6.02×10<sup>23</sup>人）まで、あと少し……ではありません。数字は数時間おきに更新されます。';
       })
