@@ -43,7 +43,9 @@
   --c-purple: #800080;
   --c-orange: #b85c00;
 
-  --font-body: "MS PGothic", "ＭＳ Ｐゴシック", "Osaka", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
+  /* 本文：英数字は Arial（入っていない端末は同じ寸法の Arimo）、日本語は BIZ UDPゴシック。
+     Windows に入っている「BIZ UDPゴシック」を先に使い、ない端末（Mac・iPhone・Android）は Google Fonts の BIZ UDPGothic を読む */
+  --font-body: Arial, "Arimo", "BIZ UDPゴシック", "BIZ UDPGothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Noto Sans JP", sans-serif;
   --font-pop: "Mochiy Pop One", "HGP創英角ﾎﾟｯﾌﾟ体", "HG創英角ﾎﾟｯﾌﾟ体", "Hiragino Maru Gothic ProN", var(--font-body);
   --font-dot: "DotGothic16", "MS Gothic", "ＭＳ ゴシック", "Osaka-Mono", monospace;
   --font-comic: "Comic Sans MS", "Comic Sans", "Chalkboard SE", var(--font-body);
