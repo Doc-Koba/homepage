@@ -668,3 +668,13 @@ hr.rainbow {
   .secret-door svg { transition: none; }
   .secret-door a:hover svg, .secret-door a:focus-visible svg { transform: none; }
 }
+
+/* ---------- 研究の部屋：講演 ---------- */
+.talks { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 12px; }
+.talks li { line-height: 1.6; }
+.talks .t-date { font-family: var(--font-dot); color: var(--pink); font-weight: bold; }
+.talks .t-title { font-weight: bold; }
+.talks .t-event { display: block; font-size: 13.5px; color: var(--ink-sub); }
+.talks .tag { font-size: 12px; border: 1px solid var(--frame); padding: 0 4px; margin-left: 4px; white-space: nowrap; }
+.talks-old { margin: 0 0 12px; }
+.talks-old summary { cursor: pointer; color: var(--link); margin-bottom: 10px; }
