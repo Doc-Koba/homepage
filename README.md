@@ -10,7 +10,7 @@ HTMLとCSSだけでできているので、GitHub Pages に置けばそのまま
 | index.html | TOP（ようこそ、What's New!、カウンター、Web拍手） |
 | profile.html | 管理人について（プロフィール、略歴、受賞、質問コーナー） |
 | research.html | 研究の部屋（3つの部屋） |
-| papers.html | 論文置き場（32本、researchmap 2026年10月17日時点） |
+| papers.html | 論文置き場（33報、2026年11月4日時点） |
 | teaching.html | 講義・教育 |
 | omikuji.html | 研究おみくじ |
 | zakki.html | 雑記帳（工事中） |
