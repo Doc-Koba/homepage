@@ -8,7 +8,7 @@ HTMLとCSSだけでできているので、GitHub Pages に置けばそのまま
 | ファイル | 中身 |
 |---|---|
 | index.html | TOP（ようこそ、What's New!、カウンター、Web拍手） |
-| profile.html | 管理人について（プロフィール、略歴、受賞、質問コーナー） |
+| profile.html | 管理人について（プロフィール、略歴、委員歴、受賞、質問コーナー） |
 | research.html | 研究の部屋（3つの部屋） |
 | papers.html | 論文置き場（33報、2026年11月4日時点） |
 | teaching.html | 講義・教育 |
