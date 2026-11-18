@@ -629,6 +629,10 @@ hr.rainbow {
 .gallery figure { margin: 0; width: 168px; text-align: center; }
 .gallery img { border: 4px ridge var(--frame); background: var(--paper-alt); vertical-align: top; }
 .gallery figcaption { margin-top: 4px; font-size: 12.5px; line-height: 1.5; color: var(--ink-sub); }
+/* 写真1枚を小さめに載せるとき（11-17 医療排水WS5の集合写真） */
+.photo-one { margin: 10px 0 16px; text-align: center; }
+.photo-one img { box-sizing: border-box; border: 4px ridge var(--frame); background: var(--paper-alt); vertical-align: top; }
+.photo-one figcaption { margin-top: 4px; font-size: 12.5px; line-height: 1.5; color: var(--ink-sub); }
 
 /* ---------- 今日のひとこと（TOP） ---------- */
 .hitokoto { margin: 0 0 14px; padding: 8px 12px; border: 2px dashed var(--frame); background: var(--paper-alt); }
